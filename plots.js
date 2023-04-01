@@ -11,14 +11,36 @@ let labels = Object.keys(data.australia);
 
 // @ADD YOUR CODE HERE
 
-console.log(australia)
+// This example dataset doesn't have a list we can use to populate the dropdown
+// So making one
+let countries = {
+    "Australia":australia,
+    "Brazil":brazil,
+    "UK":uk,
+    "Mexico":mexico,
+    "Singapore":singapore,
+    "South Africa":southAfrica
+};
+names = Object.keys(countries);
+console.log(names);
+
+console.log(australia);
 
 let layout = {
     height: 600,
     width: 800
   };
 
+
+
 function init(){
+    // Populate the dropdown from the list/array
+    selector = d3.select("#selDataset");
+    for (let i = 0; i < names.length; i++){
+        //console.log(countries[names[i]])
+        selector.append("option").text(names[i]).property("value", names[i]);
+    }
+
     trace = {
         labels: labels,
         values: australia,
@@ -32,12 +54,12 @@ function updatePlotly(){
     let dataset = dropdownMenu.property("value");
 
     let newData = {}
-    if (dataset == "australia"){newData = australia;}
-    else if (dataset=="brazil"){newData = brazil;} 
-    else if (dataset=="uk"){newData = uk;}
-    else if (dataset=="mexico"){newData = mexico;}
-    else if (dataset=="singapore"){newData = singapore;}
-    else if (dataset=="southAfrica"){newData = southAfrica;};
+    if (dataset == "Australia"){newData = australia;}
+    else if (dataset=="Brazil"){newData = brazil;} 
+    else if (dataset=="UK"){newData = uk;}
+    else if (dataset=="Mexico"){newData = mexico;}
+    else if (dataset=="Singapore"){newData = singapore;}
+    else if (dataset=="South Africa"){newData = southAfrica;};
 
     trace = {
         labels: labels,
