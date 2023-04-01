@@ -52,15 +52,11 @@ function init(){
 function updatePlotly(){
     let dropdownMenu = d3.select("#selDataset");
     let dataset = dropdownMenu.property("value");
+    console.log(`user selected ${dataset}`);
 
-    let newData = {}
-    if (dataset == "Australia"){newData = australia;}
-    else if (dataset=="Brazil"){newData = brazil;} 
-    else if (dataset=="UK"){newData = uk;}
-    else if (dataset=="Mexico"){newData = mexico;}
-    else if (dataset=="Singapore"){newData = singapore;}
-    else if (dataset=="South Africa"){newData = southAfrica;};
-
+    // Select plot update data based on dropdown value 
+    let newData = countries[dataset];
+    
     trace = {
         labels: labels,
         values: newData,
